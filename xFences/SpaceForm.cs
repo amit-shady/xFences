@@ -16,6 +16,16 @@ namespace xFences
 {
     public partial class SpaceForm : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+                int nLeftRect,     // x-coordinate of upper-left corner
+                int nTopRect,      // y-coordinate of upper-left corner
+                int nRightRect,    // x-coordinate of lower-right corner
+                int nBottomRect,   // y-coordinate of lower-right corner
+                int nWidthEllipse, // height of ellipse
+                int nHeightEllipse // width of ellipse
+            );
+
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -31,6 +41,7 @@ namespace xFences
         private const int HTTOPRIGHT = 14;
         private const int WS_EX_TOOLWINDOW = 0x00000080;
 
+
         private void MakeAllwaysOnBack()
         {
             this.Load += (s, e) => { SendToBack(); CreateFolder(); };
@@ -40,7 +51,7 @@ namespace xFences
         }
 
         private void CreateFolder()
-        {
+        {            
             if (!Directory.Exists(SpaceFolder))
                 Directory.CreateDirectory(SpaceFolder);
             if (SpaceFolder != null)
@@ -48,6 +59,10 @@ namespace xFences
                 var path =Path.Combine(Directory.GetCurrentDirectory(), SpaceFolder);
                 shellView1.CurrentFolder = new GongSolutions.Shell.ShellItem(path);
             }
+            label1.Text = Text;
+            panel1.ForeColor = ForeColor;
+            panel1.BackColor = BackColor;
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 5, 5));
         }
 
         protected override void OnActivated(EventArgs e)
@@ -67,8 +82,7 @@ namespace xFences
             panel1.MouseUp += new MouseEventHandler(shellView1_MouseUp);
             label1.MouseDown += new MouseEventHandler(shellView1_MouseDown);
             label1.MouseMove += new MouseEventHandler(shellView1_MouseMove);
-            label1.MouseUp += new MouseEventHandler(shellView1_MouseUp);
-            label1.Text = Text;
+            label1.MouseUp += new MouseEventHandler(shellView1_MouseUp);            
         }
 
         private void SpaceForm_DragEnter(object sender, DragEventArgs e)
@@ -198,12 +212,13 @@ namespace xFences
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         private void bnMenu_Click(object sender, EventArgs e)
         {
-            IntPtr hWnd = FindWindow("Progman", null);
+            contextMenuStrip1.Show(Cursor.Position);
+            /*IntPtr hWnd = FindWindow("Progman", null);
             var toggleDesktopCommand = new IntPtr(0x7402);
             if (hWnd != IntPtr.Zero)
             {
                 SendMessage(hWnd, WM_COMMAND, toggleDesktopCommand, IntPtr.Zero);
-            }
+            }*/
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -214,6 +229,36 @@ namespace xFences
             }
             else
                 Opacity = 0.4;
+        }
+
+        private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                BackColor = dlg.Color;
+                panel1.BackColor = dlg.Color;
+            }
+        }
+
+        private void setForegroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                ForeColor = dlg.Color;
+                panel1.ForeColor = dlg.Color;
+            }
+        }
+
+        private void setNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SpaceName dlg = new SpaceName();
+            dlg.DialogName = label1.Text;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                label1.Text = Text = Name = dlg.DialogName;                
+            }
         }
     }
 }

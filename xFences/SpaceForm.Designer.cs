@@ -31,11 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.shellView1 = new GongSolutions.Shell.ShellView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.bnMenu = new System.Windows.Forms.Button();
-            this.bnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.setBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setForegroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bnMenu = new System.Windows.Forms.Button();
+            this.bnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // shellView1
@@ -69,31 +74,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 29);
             this.panel1.TabIndex = 1;
             // 
-            // bnMenu
-            // 
-            this.bnMenu.FlatAppearance.BorderSize = 0;
-            this.bnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bnMenu.Image = global::xFences.Properties.Resources.icons8_menu_24;
-            this.bnMenu.Location = new System.Drawing.Point(3, 2);
-            this.bnMenu.Name = "bnMenu";
-            this.bnMenu.Size = new System.Drawing.Size(24, 24);
-            this.bnMenu.TabIndex = 0;
-            this.bnMenu.UseVisualStyleBackColor = true;
-            this.bnMenu.Click += new System.EventHandler(this.bnMenu_Click);
-            // 
-            // bnClose
-            // 
-            this.bnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bnClose.FlatAppearance.BorderSize = 0;
-            this.bnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bnClose.Image = global::xFences.Properties.Resources.icons8_close_24;
-            this.bnClose.Location = new System.Drawing.Point(773, 3);
-            this.bnClose.Name = "bnClose";
-            this.bnClose.Size = new System.Drawing.Size(24, 24);
-            this.bnClose.TabIndex = 0;
-            this.bnClose.UseVisualStyleBackColor = true;
-            this.bnClose.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -111,6 +91,63 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setNameToolStripMenuItem,
+            this.setBackgroundColorToolStripMenuItem,
+            this.setForegroundColorToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 92);
+            // 
+            // setBackgroundColorToolStripMenuItem
+            // 
+            this.setBackgroundColorToolStripMenuItem.Name = "setBackgroundColorToolStripMenuItem";
+            this.setBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.setBackgroundColorToolStripMenuItem.Text = "Set Background Color";
+            this.setBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.setBackgroundColorToolStripMenuItem_Click);
+            // 
+            // setForegroundColorToolStripMenuItem
+            // 
+            this.setForegroundColorToolStripMenuItem.Name = "setForegroundColorToolStripMenuItem";
+            this.setForegroundColorToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.setForegroundColorToolStripMenuItem.Text = "Set Foreground Color";
+            this.setForegroundColorToolStripMenuItem.Click += new System.EventHandler(this.setForegroundColorToolStripMenuItem_Click);
+            // 
+            // setNameToolStripMenuItem
+            // 
+            this.setNameToolStripMenuItem.Name = "setNameToolStripMenuItem";
+            this.setNameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.setNameToolStripMenuItem.Text = "Set Name";
+            this.setNameToolStripMenuItem.Click += new System.EventHandler(this.setNameToolStripMenuItem_Click);
+            // 
+            // bnMenu
+            // 
+            this.bnMenu.FlatAppearance.BorderSize = 0;
+            this.bnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bnMenu.Image = global::xFences.Properties.Resources.icons8_menu_24;
+            this.bnMenu.Location = new System.Drawing.Point(3, 2);
+            this.bnMenu.Name = "bnMenu";
+            this.bnMenu.Size = new System.Drawing.Size(26, 24);
+            this.bnMenu.TabIndex = 0;
+            this.bnMenu.TabStop = false;
+            this.bnMenu.UseVisualStyleBackColor = true;
+            this.bnMenu.Click += new System.EventHandler(this.bnMenu_Click);
+            // 
+            // bnClose
+            // 
+            this.bnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bnClose.FlatAppearance.BorderSize = 0;
+            this.bnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bnClose.Image = global::xFences.Properties.Resources.icons8_close_24;
+            this.bnClose.Location = new System.Drawing.Point(773, 3);
+            this.bnClose.Name = "bnClose";
+            this.bnClose.Size = new System.Drawing.Size(24, 24);
+            this.bnClose.TabIndex = 0;
+            this.bnClose.TabStop = false;
+            this.bnClose.UseVisualStyleBackColor = true;
+            this.bnClose.Click += new System.EventHandler(this.button1_Click);
             // 
             // SpaceForm
             // 
@@ -137,6 +174,7 @@
             this.MouseHover += new System.EventHandler(this.SpaceForm_MouseEnter);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SpaceForm_MouseMove);
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -149,5 +187,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bnMenu;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem setNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setBackgroundColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setForegroundColorToolStripMenuItem;
     }
 }

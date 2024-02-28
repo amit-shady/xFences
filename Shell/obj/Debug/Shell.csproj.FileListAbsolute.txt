@@ -1,0 +1,12 @@
+Q:\Repos\xFences\Shell\bin\Debug\GongShell.XML
+Q:\Repos\xFences\Shell\bin\Debug\GongShell.dll
+Q:\Repos\xFences\Shell\bin\Debug\GongShell.pdb
+Q:\Repos\xFences\Shell\obj\Debug\Shell.csproj.AssemblyReference.cache
+Q:\Repos\xFences\Shell\obj\Debug\GongSolutions.Shell.FileDialogToolbar.resources
+Q:\Repos\xFences\Shell\obj\Debug\GongSolutions.Shell.PlacesToolbar.resources
+Q:\Repos\xFences\Shell\obj\Debug\GongSolutions.Shell.Properties.Resources.resources
+Q:\Repos\xFences\Shell\obj\Debug\GongSolutions.Shell.ShellItemBrowseForm.resources
+Q:\Repos\xFences\Shell\obj\Debug\Shell.csproj.GenerateResource.cache
+Q:\Repos\xFences\Shell\obj\Debug\Shell.csproj.CoreCompileInputs.cache
+Q:\Repos\xFences\Shell\obj\Debug\GongShell.dll
+Q:\Repos\xFences\Shell\obj\Debug\GongShell.pdb

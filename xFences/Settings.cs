@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace xFences
 {
@@ -30,12 +31,19 @@ namespace xFences
     public class SpaceFormSettings
     {
         public SpaceFormSettings() { }
-        public SpaceFormSettings(SpaceForm s) { Name = s.Text; rect = new Rectangle(s.Location,s.Size); Folder = s.SpaceFolder; }
+        public SpaceFormSettings(SpaceForm s) 
+        { 
+            Name = s.Text; rect = new Rectangle(s.Location,s.Size); Folder = s.SpaceFolder; 
+            ForeColor = s.ForeColor;
+            BackColor = s.BackColor;
+        }
         public SpaceForm GetSpaceForm() 
         { 
             var spaceForm = new SpaceForm();
             spaceForm.Name = Name;
             spaceForm.Text = Name;
+            spaceForm.BackColor = BackColor;
+            spaceForm.ForeColor = ForeColor;
             spaceForm.SpaceFolder = Folder;
             spaceForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             spaceForm.Size = rect.Size;
@@ -46,5 +54,12 @@ namespace xFences
         public string Name;
         public Rectangle rect;
         public string Folder;
+        public string foreColor = ColorTranslator.ToHtml(Color.Black);
+        public string backColor = ColorTranslator.ToHtml(Color.White);
+
+        [XmlIgnore]
+        public Color ForeColor { get => ColorTranslator.FromHtml(foreColor); set => foreColor = ColorTranslator.ToHtml(value); }
+        [XmlIgnore]
+        public Color BackColor { get => ColorTranslator.FromHtml(backColor); set => backColor = ColorTranslator.ToHtml(value); }
     }
 }
